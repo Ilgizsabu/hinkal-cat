@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Хинкали</title>
     <style>
         body {
             width: 50%;
@@ -12,18 +12,65 @@
             box-sizing: border-box;
             text-align: left;
         }
+        
+        .triangle, .title {
+            cursor: pointer;
+        }
+
+        .wrapper {
+            margin-top: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            position: relative;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid black;
+            margin-right: 10px;
+            transition: transform 0.2s;
+            transform: rotate(-90deg);
+        }
+
+        .triangle.open {
+            transform: rotate(0deg);
+        }
+
+        .title {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .description {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <button id="btn">Кнопка</button>
-    <div id="triangle"></div>
-    <div id="text">
-        <h1 id="title">Хинкали</h1>
-        <p id="description">Хинка́ли (груз. ხინკალი) — блюдо грузинской кухни из горных областей Пшави, Мтиулети и Хевсурети в Грузии, получившее распространение в других районах Кавказа и по всему бывшему СССР. Разновидность дамплингов.
-        </p>
+    <div class="wrapper">
+        <div class="triangle"></div>
+        <h1 class="title">Хинкали</h1>
     </div>
+        <p class="description">
+            Хинка́ли (груз. ხინკალი) — блюдо грузинской кухни из горных областей Пшави, Мтиулети и Хевсурети в Грузии, получившее распространение в других районах Кавказа и по всему бывшему СССР. Разновидность дамплингов.
+        </p>
     <script>
+        const triangle = document.querySelector('.triangle');
+        const description = document.querySelector('.description');
 
+        triangle.addEventListener('click', () => {
+            if (description.style.display === 'none') {
+                description.style.display = 'block';
+                triangle.classList.add('open');
+            } else {
+                description.style.display = 'none';
+                triangle.classList.remove('open');
+            }
+        });
     </script>
 </body>
 </html>
