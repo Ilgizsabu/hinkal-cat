@@ -48,6 +48,9 @@
         .description {
             display: none;
         }
+        .description.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -63,13 +66,8 @@
         const description = document.querySelector('.description');
 
         triangle.addEventListener('click', () => {
-            if (description.style.display === 'none') {
-                description.style.display = 'block';
-                triangle.classList.add('open');
-            } else {
-                description.style.display = 'none';
-                triangle.classList.remove('open');
-            }
+            description.classList.toggle('show');
+            triangle.classList.toggle('open');
         });
     </script>
 </body>
